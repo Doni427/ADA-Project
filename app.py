@@ -105,7 +105,13 @@ with tab2:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        age = st.selectbox("Age", list(range(18, 91)), index=12)
+        age = st.number_input(
+            "Age",
+            min_value=18,
+            max_value=100,
+            value=30,
+            step=1
+            )
         job = st.selectbox("Job", [
             "admin.","technician","management","blue-collar",
             "services","housemaid","retired","self-employed",
@@ -116,7 +122,13 @@ with tab2:
             "high.school","professional.course",
             "university.degree","illiterate"
         ])
-        campaign = st.selectbox("Campaign Calls", list(range(1, 51)), index=1)
+        campaign = st.number_input(
+            "Campaign Calls",
+            min_value=1,
+            max_value=50,
+            value=2,
+            step=1
+            )
         housing = st.selectbox("Housing Loan", ["yes", "no"])
 
     with col2:
@@ -139,8 +151,22 @@ with tab2:
                                  [0.7, 1.1, 1.3, 1.5, 2.0, 3.0, 4.0])
         nr_employed = st.selectbox("Number of Employees",
                                    [4963.6, 5008.7, 5076.2, 5099.1, 5228.1])
-        pdays = st.selectbox("Days Since Last Contact", [999, 3, 6, 10, 20])
-        previous = st.selectbox("Previous Contacts", [0, 1, 2, 3, 4])
+        pdays = st.number_input(
+            "Days Since Last Contact (999 = never)",
+            min_value=0,
+            max_value=999,
+            value=999,
+            step=1
+            )
+
+        previous = st.number_input(
+            "Previous Contacts",
+            min_value=0,
+            max_value=20,
+            value=0,
+            step=1
+            )
+
 
     # -------------------------------------------------------------------------
     # FEATURE ENGINEERING (IDENTICAL TO TRAINING)
@@ -200,4 +226,4 @@ with tab2:
 # FOOTER
 # -----------------------------------------------------------------------------
 st.markdown("---")
-st.caption("© ADA 442 – Machine Learning Project | Production-Ready Streamlit App")
+st.caption("© ADA 442 – Machine Learning Project by Anıl Doni, Emre Beldağ, Volkan Sarı")
